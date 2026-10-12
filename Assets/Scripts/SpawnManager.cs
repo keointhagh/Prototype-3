@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
+    private PlayerController playerController;
     private Vector3 spawnPos = new Vector3(25f, 0f, 0.5f);
 
     private float spawnTime; // 2 second delay before the first spawn;
@@ -17,24 +18,34 @@ public class SpawnManager : MonoBehaviour
     {
         spawnTime = Time.time + 2f;
         spawnRange = 1f;
-        increaseDifficulty = 0.9f;
+        increaseDifficulty = 0.9f; //Must be less than 1 to reduce spawn time and increase difficulty
         frequencyTime = 10f;
         difficultyTime = Time.time + frequencyTime;
+
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if(playerController != null && !playerController.isGameOver)
+        {
+            SpawnObstacle();
+        }
+    }
+
+    void SpawnObstacle()
     {
         if (obstaclePrefab != null && Time.time >= spawnTime)
         {
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
             spawnTime = Time.time + Random.Range(spawnRange, spawnRange + 3f); // Random spawn range for next spawn
         }
-        if(Time.time >= difficultyTime)
+        if (Time.time >= difficultyTime)
         {
             spawnRange *= increaseDifficulty; // Reduce spawn range to increase difficulty
             difficultyTime = Time.time + frequencyTime; // Set next time to increase difficulty
         }
     }
 
-}
+    }
