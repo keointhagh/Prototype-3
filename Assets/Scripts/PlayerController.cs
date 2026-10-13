@@ -118,8 +118,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector3 playerPos = new Vector3(1f, 4f, 0.5f);
-    private Quaternion playerRot;
+
     private readonly Vector3 normalGravity = new Vector3(0, -9.81f, 0);
     private Rigidbody playerRb;
 
@@ -149,7 +148,6 @@ public class PlayerController : MonoBehaviour
 
         Physics.gravity = normalGravity * gravityModifier;
         isGameOver = false;
-        playerRot = transform.rotation;
 
         isOnGround = true; // Assume true if they start on the ground
 

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefab;
     private PlayerController playerController;
-    private Vector3 spawnPos = new Vector3(25f, 0f, 0.5f);
+    private Vector3 spawnPos = new Vector3(25f, 0.5f, 0.5f);
 
     private float spawnTime; // 2 second delay before the first spawn;
     private float spawnRange; // Range for random spawn time (between spawnRange and spawnRange + 3 seconds)
@@ -36,9 +36,10 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnObstacle()
     {
-        if (obstaclePrefab != null && Time.time >= spawnTime)
+        GameObject obstacle = obstaclePrefab[Random.Range(0, obstaclePrefab.Length)]; // Randomly select an obstacle prefab
+        if (obstacle != null && Time.time >= spawnTime)
         {
-            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+            Instantiate(obstacle, spawnPos, obstacle.transform.rotation);
             spawnTime = Time.time + Random.Range(spawnRange, spawnRange + 3f); // Random spawn range for next spawn
         }
         if (Time.time >= difficultyTime)

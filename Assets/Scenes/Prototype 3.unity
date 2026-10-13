@@ -929,7 +929,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfe95d8c0ef0be4ba06faf7b50b20a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  obstaclePrefab: {fileID: 1633053258382567057, guid: ef57fb7d009c7e44aa195d44d7391d91, type: 3}
+  obstaclePrefab:
+  - {fileID: 1633053258382567057, guid: ef57fb7d009c7e44aa195d44d7391d91, type: 3}
+  - {fileID: 8369439673977894871, guid: f7b0cd861ce627a45b8e639da3872ec1, type: 3}
+  - {fileID: 5228628693736684551, guid: a70d883e52f93ce4889e9aad2188a3e3, type: 3}
+  - {fileID: 9119949312530049534, guid: d08735a0c2bad74408ea6088570acbcf, type: 3}
+  - {fileID: 6687837871288609115, guid: 5e760cf55579f554297d9c2714181ca5, type: 3}
 --- !u!4 &1229435703
 Transform:
   m_ObjectHideFlags: 0
@@ -1204,7 +1209,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8f377cb9734e6949991c5f6dbbe5ba3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
